@@ -4410,12 +4410,7 @@ public class ServiceStateTracker extends Handler {
         if ((ar.exception == null) && (ar.result != null)) {
             mSignalStrength = (SignalStrength) ar.result;
             mSignalStrength.validateInput();
-            if (dataRat == ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN
-                    && voiceRat == ServiceState.RIL_RADIO_TECHNOLOGY_UNKNOWN) {
-                mSignalStrength.fixType();
-            } else {
-                mSignalStrength.setGsm(isGsm);
-            }
+            mSignalStrength.setGsm(isGsm);
             mSignalStrength.setLteRsrpBoost(mSS.getLteEarfcnRsrpBoost());
         } else {
             log("onSignalStrengthResult() Exception from RIL : " + ar.exception);
